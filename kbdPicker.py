@@ -270,15 +270,14 @@ class kbdPicker:
                             pass # ignore unknown codes
 
     def readline(self):
+        line = ''
         while True:
-            ch = self._getchar()
+            ch = self.getchar()
             if ch == '\n':
-                print(f"{readLine}")
-                line = self.readLine
-                self.readLine = ''
+                print(f"{line}")
                 return line
             else:
-                self.readLine += ch
+                line += ch
 
 if __name__ == "__main__":
     #tests
