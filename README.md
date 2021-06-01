@@ -1,5 +1,5 @@
 # Keyboard picker
-This keyboard picker class gives you a getchar() and getline() interface to a specific hid kdb device. You can specify the keyboard you want to interact with via USB port ID, device name or the device's path. It also let's you know when the device is unplugged and allows to you wait for a specific device to be plugged in.
+This keyboard picker class gives you a getchar() and getline() interface to a specific hid kbd device. You can specify the keyboard you want to interact with via USB port ID, device name or the device's path. It also let's you know when the device is unplugged and allows to you wait for a specific device to be plugged in.
 
 # Use cases
 This class is perfect anytime you have more than one keyboard plugged in and want to interact with them differently. For instance if you want to read from a bar code scanner. Or if you are building an application where two people can interact with one console but each one their own keyboard.
