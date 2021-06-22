@@ -134,8 +134,8 @@ class kbdPicker:
     device = None
     shifted = False
 
-    def __init__(self, device:str=None):
-        if device:
+    def __init__(self, device:str = ''):
+        if device != '':
             self.setDeviceByPath(device)
 
     def __del__(self):
@@ -175,7 +175,8 @@ class kbdPicker:
                                     handler = handler.split('=')[1]
                                 dev['path'] = f'/dev/input/{handler}'
                     elif line[0] == 'P:':
-                        dev['physicalPort'] = lineFull[lineFull.find('.usb-')+len('.usb-'):].split('/')[0]
+#                        dev['physicalPort'] = lineFull[lineFull.find('.usb-')+len('.usb-'):].split('/')[0]
+                        dev['physicalPort'] = lineFull[lineFull.rfind('-')+1:].split('/')[0]
             return list
 
     def setDeviceByPhysicalUsbPort(self, port:str):
@@ -226,8 +227,8 @@ class kbdPicker:
                     return
 
     #return the device's name or None if no device is found
-    def getDeviceName(self, device:str = None):
-        if device:
+    def getDeviceName(self, device:str = ''):
+        if device != '':
             dev = device
         elif self.device:
             dev = self.device
@@ -296,7 +297,7 @@ if __name__ == "__main__":
 
     kbd = kbdPicker()
 #    deviceName = 'WCM WCM Keyboard'
-    usbPort = '1.4.3'
+    usbPort = '1.4'
     while True:
         try:
             kbd.waitForDeviceByPhysicalUsbPort(usbPort)
@@ -311,6 +312,6 @@ if __name__ == "__main__":
             print(f"{deviceName}: Unplugged")
             deviceConnected = False
         except KeyboardInterrupt:
-            print(f"Cya")
+            print(f"\nCya")
             exit()
 
